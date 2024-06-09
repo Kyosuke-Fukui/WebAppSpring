@@ -1,0 +1,73 @@
+-- SQL文
+-- システムで使うデータを初期化する
+-- データベースを削除後、データベース作成→テーブル作成→データ追加を行う
+-- rootユーザで行う
+
+--【データベース作成】
+DROP DATABASE IF EXISTS task_list_db;
+CREATE DATABASE task_list_db character set utf8mb4;
+
+--【ユーザ作成】
+DROP USER IF EXISTS 'admin_user' @'localhost';
+CREATE USER 'admin_user' @'localhost' identified by 'password';
+GRANT ALL ON *.* to 'admin_user' @'localhost';
+
+--【DBに接続】
+USE task_list_db;
+
+--【テーブル削除】
+DROP TABLE IF EXISTS auth_roles;
+DROP TABLE IF EXISTS auth_users;
+DROP TABLE IF EXISTS t_task;
+
+-- 【テーブル作成】
+--□ユーザ(認証)テーブル
+CREATE TABLE auth_users(
+	user_id int PRIMARY KEY AUTO_INCREMENT,
+	password varchar(64) NOT NULL,
+	upd_username varchar(20) NOT NULL UNIQUE,
+	upd_datetime datetime NOT NULL
+);
+
+--□ロール(認証)テーブル
+CREATE TABLE auth_roles(
+	user_id int PRIMARY KEY AUTO_INCREMENT,
+	role_name varchar(20) NOT NULL,
+	upd_username varchar(20) NOT NULL UNIQUE,
+	upd_datetime datetime NOT NULL
+);
+
+--□担当業務テーブル
+CREATE TABLE t_task(
+	task_id int PRIMARY KEY AUTO_INCREMENT,
+	dept_name varchar(20) NOT NULL,
+	doc_name varchar(20) NOT NULL,
+	task_status varchar(20) NOT NULL,
+	reg_username varchar(20) NOT NULL,
+	reg_datetime datetime NOT NULL,
+	upd_username varchar(20) NOT NULL,
+	upd_datetime datetime NOT NULL
+);
+
+--【データ追加】
+--□ユーザ(認証)テーブル
+INSERT INTO auth_users values('', SHA2('password', 256), 'testuser', now());
+
+--□ロール(認証)テーブル
+INSERT INTO auth_roles values('', 'role','testuser', now());
+
+--□担当業務テーブル
+INSERT INTO t_task VALUES('', '経理部', 'システム購入契約書202404.pdf','審査中', 'testuser', now(), 'testuser',now());
+INSERT INTO t_task VALUES('', '人事部', '雇用契約書ひな型202404.pdf','審査中', 'testuser', now(), 'testuser',now());
+INSERT INTO t_task VALUES('', '総務部', '物品契約書202404.pdf','審査中', 'testuser', now(), 'testuser',now());
+
+--【データ確認】
+--□ユーザ(認証)テーブル
+SELECT * FROM auth_users;
+
+--□ロール(認証)テーブル
+SELECT * FROM auth_roles;
+
+--□担当業務テーブル
+SELECT * FROM t_task;
+

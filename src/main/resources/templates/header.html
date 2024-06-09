@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>HEADER</title>
+</head>
+
+<body>
+	<div th:fragment="header">
+		<form th:action="@{/logout}" method="post">
+			<input type="submit" value="ログアウト">
+		</form>
+		<h1>審査資料進捗管理アプリ</h1>
+	</div>
+</body>
+
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>ログイン情報変更</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+</head>
+<body>
+	<header th:insert="~{header :: header}"></header>
+
+	<h2>ログイン情報変更</h2>
+	<form method="post" th:action="@{updateUserInfo}">
+		<table>
+			<tr>
+				<td>ユーザ名</td>
+				<td><input type="text" th:value="${username}" disabled="disabled">  </td>
+			</tr>
+			<tr>
+				<td>パスワード</td>
+				<td><input type="password" name="pass" placeholder="パスワードを入力" autocomplete="new-password"></td>
+			</tr>
+		</table>
+
+		<input type="submit" value="パスワード変更"><br>
+	</form>
+	<p th:text="${msg}"></p>
+
+	<a href="main">メイン画面に戻る</a>
+</body>
+</html>

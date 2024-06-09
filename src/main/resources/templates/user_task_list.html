@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>担当業務一覧</title>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+
+</head>
+
+<body>
+	<header th:insert="~{header :: header}"></header>
+
+	<!-- 見出し -->
+	<h2>担当業務一覧</h2>
+
+	<!-- 追加ボタン -->
+	<input type="button" onclick="location.href='userTaskInsert'" value="追加">
+
+	<table>
+		<tr>
+			<th>編集</th>
+			<th>依頼日時</th>
+			<th>依頼部署</th>
+			<th>審査資料</th>
+			<th>進捗</th>
+		</tr>
+		<tr class="tr" th:each="task : ${taskList}">
+			<td>
+				<!-- 更新ボタン -->
+				 <input type="button" th:onclick="|location.href='/taskUpdate?task_id=${task.taskId}'|" value="更新">
+				
+				<!-- 削除ボタン -->
+				<form th:action="@{/taskDelete}" method="post">
+					<input type="hidden" th:value="${task.taskId}" name="taskId">
+					<input type="submit" value="削除">
+				</form>
+			</td>
+			<td th:text="${task.datetime}"></td>
+			<td th:text="${task.deptName}"></td>
+			<td th:text="${task.docName}"> </td>
+			<td th:text="${task.taskStatus}"></td>
+		</tr>
+	</table>
+
+	<a href="main">メインメニューに戻る</a>
+</body>
+
+</html>

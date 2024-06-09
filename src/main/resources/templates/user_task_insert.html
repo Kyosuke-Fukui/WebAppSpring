@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>新規業務追加</title>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+</head>
+
+<body>
+	<header th:insert="~{header :: header}"></header>
+
+	<h2>新規業務追加</h2>
+
+	<form th:action="@{/userTaskInsert}" method="post" th:object="${userTaskList}">
+		<table>
+			<tr>
+				<th>依頼部署</th>
+				<th>審査資料</th>
+			</tr>
+			<tr>
+				<td>
+					<div class="selectbox">
+						<select th:field="*{deptName}">
+							<option value="営業部">営業部</option>
+							<option value="総務部">総務部</option>
+							<option value="経理部">経理部</option>
+							<option value="人事部">人事部</option>
+						</select>
+					</div>
+				</td>
+				<td><input type="text" th:field="*{docName}"></td>
+			</tr>
+		</table>
+		<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+		<input type="submit" value="確定">
+	</form>
+
+	<div>
+		<a href="userTasklist">担当業務一覧に戻る</a>
+	</div>
+</body>
+
+</html>

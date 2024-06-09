@@ -1,0 +1,119 @@
+h1 {
+  font-weight: bold;
+  padding: 0.5em 1em;
+  background-color: seagreen;
+  color: #fff;
+  overflow: hidden;
+  position: relative;
+}
+
+h1::after {
+  content: '';
+  background-color: #fff;
+  opacity: 0.3;
+  transform: rotate(-65deg);
+  position: absolute;
+  bottom: -250px;
+  right: -250px;
+  width: 300px;
+  height: 500px;
+}
+
+h2 {
+  border-bottom: 6px double #000;
+}
+
+form {
+  display: inline;
+}
+
+/*
+.my-parts {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  max-width: 100%;
+}
+*/
+table {
+  border-collapse: collapse;
+  border: 1px solid rgba(0,0,0,.1);
+  /* table-layout: fixed; */
+  width: 800px;
+}
+th, td {
+  border: 1px solid rgba(0,0,0,.1);
+  padding: .6em;
+  text-align: center;
+}
+th {
+  background: seagreen;
+  color: #fff;
+  font-weight: bold;
+}
+
+.tr:hover {
+  background: lightgreen;
+  color: #fff;
+}
+
+input[type=button], input[type=submit], input[type=reset] {
+  background-color: seagreen;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover {
+  opacity: 0.6;
+}
+
+
+a {
+  color:green;
+} 
+
+a:hover {
+  color:lightgreen;
+} 
+
+.selectbox {
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+}
+
+.selectbox::after {
+    position: absolute;
+    right: 15px;
+    width: 10px;
+    height: 7px;
+    background-color: #535353;
+    clip-path: polygon(0 0, 100% 0, 50% 100%);
+    content: '';
+    pointer-events: none;
+}
+
+.selectbox select {
+    appearance: none;
+    min-width: 230px;
+    height: 2.8em;
+    padding: .4em calc(.8em + 30px) .4em .8em;
+    border: none;
+    border-bottom: 2px solid #d0d0d0;
+    background-color: #fff;
+    color: #333333;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+.selectbox select:focus {
+    outline: none;
+}
+
+input[type=text], input[type=password] {
+	width:80%;
+	font-size: 1em;
+}

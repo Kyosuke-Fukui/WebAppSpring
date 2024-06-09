@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>メインメニュー</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+</head>
+<body>
+	<header th:insert="~{header :: header}"></header>
+	<ul>
+		<li><a href="/tasklist">担当業務一覧（全体）</a></li>
+		<li><a href="/userTasklist">担当業務一覧（ユーザ）</a></li>
+		<li><a href="/updateUserInfo">ログイン情報変更</a></li>
+	</ul>
+</body>
+</html>

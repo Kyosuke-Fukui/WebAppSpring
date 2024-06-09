@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>進捗情報変更</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+
+</head>
+<body>
+	<header th:insert="~{header :: header}"></header>
+
+	<h2>進捗情報変更</h2>
+
+	<table>
+		<tr>
+			<th>依頼日時</th>
+			<th>依頼部署</th>
+			<th>審査資料</th>
+			<th>進捗</th>
+		</tr>
+		<tr>
+			<td th:text="${task.datetime}"></td>
+			<td th:text="${task.deptName}"></td>
+			<td th:text="${task.docName}"></td>
+			<td th:text="${task.taskStatus}"></td>
+		</tr>
+	</table>
+
+	<form th:action="@{/taskUpdate}" method="post">
+		<input type="hidden" th:value="${task.taskId}" name="taskId">
+		<input type="submit" value="審査完了">
+	</form>
+	<div>
+		<a href="userTasklist">担当業務一覧に戻る</a>
+	</div>
+</body>
+</html>

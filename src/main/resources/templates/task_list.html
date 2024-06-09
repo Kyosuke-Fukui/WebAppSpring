@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>全体進捗一覧</title>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+</head>
+
+<body>
+	<header th:insert="~{header :: header}"></header>
+	
+	<h2>全体進捗一覧</h2>
+	<table>
+		<tr>
+			<th>担当者</th>
+			<th>依頼日時</th>
+			<th>依頼部署</th>
+			<th>審査資料</th>
+			<th>進捗</th>
+		</tr>
+		<tr th:each="task : ${taskList}">
+			<td th:text="${task.username}">User</td>
+			<td th:text="${task.datetime}">Date</td>
+			<td th:text="${task.deptName}">Dept</td>
+			<td th:text="${task.docName}">Doc</td>
+			<td th:text="${task.taskStatus}">Status</td>
+		</tr>
+	</table>
+	
+	<a href="main">メインメニューに戻る</a>
+</body>
+
+</html>
